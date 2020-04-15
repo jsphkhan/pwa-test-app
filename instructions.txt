@@ -29,6 +29,14 @@ Material UI, Loadash, Moment and big JS libs are added as Node modules
 
 I am not using Dev tools like Prettier, Husky hooks, lint-staged.
 
+Brotli Compression with Express:
+---------------------------------
+https://www.npmjs.com/package/shrink-ray-current
+
+Brotli compress files with Webpack:
+-------------------------------------
+https://codeburst.io/express-brotli-webpack-a60773e7ec6c
+
 
 Deployment
 -------------
@@ -36,6 +44,11 @@ Deploy 2 version of the app. EC2 instance.
 Deploy using docker at diff ports.
 One version - with gZip
 2nd version - with Brotli.
+
+Docker images created:
+------------------------
+docker pull jsphkhan/pwa-test-app-brotli:v1.0.0
+docker pull jsphkhan/pwa-test-app-gzip:v1.0.0
 
 
 Tutorials:

@@ -1,5 +1,7 @@
 FROM node:10
 
+RUN npm install -g node-gyp
+
 RUN npm install -g pm2
 
 WORKDIR /app

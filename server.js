@@ -7,10 +7,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const compression = require('compression');
+const shrinkRay = require('shrink-ray-current');
 
 console.log('Compression used: ' + process.env.COMPRESSION);
 
 process.env.COMPRESSION === 'gzip' && app.use(compression());
+process.env.COMPRESSION === 'brotli' && app.use(shrinkRay());
+
 //static path
 app.use(express.static(path.resolve(__dirname, 'build')));
 
