@@ -1,0 +1,46 @@
+This is a Playground for me to test Web Performance
+
+App is a React App created using Create React App
+Not Ejected till now
+Basically I am trying to create a replica of Tajawal MWeb
+
+App structure
+---------------
+SPA will multiple pages - page1, page2, page3
+
+I will test
+-------------
+PWA capabilities
+Preloading and Prefetching of resources
+Use large resources such as 3rd party font css, large JS lib, large CSS library
+Web pack code splitting, bundles, route based, component based
+Enable Text Compression - gZip, Brotli
+Eliminate Render Blocking resources
+Use of libraries like Guess.js, Quicklinks JS
+Gatsby GuessJS plugin - https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-guess-js
+
+server.js - will serve the production build 
+It is a Node express server
+
+
+/public/index.html - is the index page. This is where I will add large CSS, Fonts, etc
+
+Material UI, Loadash, Moment and big JS libs are added as Node modules
+
+I am not using Dev tools like Prettier, Husky hooks, lint-staged.
+
+
+Deployment
+-------------
+Deploy 2 version of the app. EC2 instance. 
+Deploy using docker at diff ports.
+One version - with gZip
+2nd version - with Brotli.
+
+
+Tutorials:
+-------------
+Preload, Prefetch And Priorities in Chrome - https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf
+Code Splitting and Prefetching in Gatsby - https://www.gatsbyjs.org/docs/how-code-splitting-works/
+A React And Preact Progressive Web App Performance Case Study: Treebo - https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
+Behind the Scenes Gatsby Performance: https://www.gatsbyjs.org/blog/2019-04-02-behind-the-scenes-what-makes-gatsby-great/
