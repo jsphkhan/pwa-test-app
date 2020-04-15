@@ -33,6 +33,7 @@ I am not using Dev tools like Prettier, Husky hooks, lint-staged.
 
 Brotli Compression with Express:
 ---------------------------------
+Main NPM module used: shrink-ray-current
 https://www.npmjs.com/package/shrink-ray-current
 
 Brotli compress files with Webpack:
@@ -59,3 +60,8 @@ Preload, Prefetch And Priorities in Chrome - https://medium.com/reloading/preloa
 Code Splitting and Prefetching in Gatsby - https://www.gatsbyjs.org/docs/how-code-splitting-works/
 A React And Preact Progressive Web App Performance Case Study: Treebo - https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
 Behind the Scenes Gatsby Performance: https://www.gatsbyjs.org/blog/2019-04-02-behind-the-scenes-what-makes-gatsby-great/
+
+
+Pending:
+---------
+Webpack Bundle Analyzer
