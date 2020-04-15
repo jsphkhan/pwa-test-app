@@ -4,6 +4,8 @@ App is a React App created using Create React App
 Not Ejected till now
 Basically I am trying to create a replica of Tajawal MWeb
 
+Git repo: https://github.com/jsphkhan/pwa-test-app
+
 App structure
 ---------------
 SPA will multiple pages - page1, page2, page3
