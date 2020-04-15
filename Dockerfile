@@ -1,5 +1,6 @@
 FROM node:10
 
+# This is needed for Brotli compression wto work
 RUN npm install -g node-gyp
 
 RUN npm install -g pm2

@@ -15,6 +15,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import _ from 'lodash';
 import moment from 'moment';
+
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
+import { FixedSizeList as List } from "react-window";
+
 //end
 
 //data
@@ -65,6 +70,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Row = ({ index, style }) => (
+  <div style={style}>Row {index}</div>
+);
+ 
+const Example = () => (
+  <List
+    height={150}
+    itemCount={1000}
+    itemSize={35}
+    width={300}
+  >
+    {Row}
+  </List>
+);
+
 function App() {
   const classes = useStyles();
   return (
@@ -80,6 +100,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <div className={classes.container}>
+        <Example />
         <GridList cellHeight={160} className={classes.gridList} cols={3}>
           {_.map(tileData, (tile) => (
             <GridListTile key={tile.img} cols={tile.cols || 1}>
@@ -87,6 +108,9 @@ function App() {
             </GridListTile>
           ))}
         </GridList>
+        <LazyLoad height={200}>
+          <img src={logo} alt=""/>
+        </LazyLoad>
       </div>
     </>
   );
