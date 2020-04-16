@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import Todo from './mobxstore/store';
 
 
 //import pages - routes - code splitting
@@ -21,6 +22,11 @@ const EditPage = React.lazy(() =>
 
 
 function App() {
+  useEffect(() => {
+    const todos = new Todo(); 
+    console.log(todos);
+  }, [])
+
   return (
     <Router>
       <React.Suspense fallback={<p>Loading...</p>}>
