@@ -1,14 +1,14 @@
 This is a Playground for me to test Web Performance
 
 App is a React App created using Create React App
-Not Ejected till now
+I have Ejected but have not modified webpack.config.js
 Basically I am trying to create a replica of Tajawal MWeb
 
 Git repo: https://github.com/jsphkhan/pwa-test-app
 
 App structure
 ---------------
-SPA will multiple pages - page1, page2, page3
+SPA with multiple pages - page1, page2, page3
 
 I will test
 -------------

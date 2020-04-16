@@ -9,6 +9,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -69,6 +72,9 @@ const DetailsPage = () => {
         <p>User Id: {id}</p>
         <p>Email: {email}</p>
         <button onClick={handleClick}>Edit</button>
+
+        <Slider />
+        <Range />
       </div>
     </div>
   );
