@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState, useCallback } from 'react';
 //react-router hooks
 import { useLocation, useParams, useHistory } from 'react-router-dom';
 
@@ -11,6 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+
+//custom comp
+import Picker from '../../components/Picker';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DetailsPage = () => {
+  const [showPicker, setShowPicker] = useState(false);
+
   const classes = useStyles();
   const location = useLocation();
   const params = useParams();
@@ -56,6 +60,10 @@ const DetailsPage = () => {
     });
   };
 
+  const handlePicker = useCallback(() => {
+    setShowPicker(true);
+  }, [showPicker]);
+
   return (
     <div>
       <AppBar>
@@ -73,6 +81,10 @@ const DetailsPage = () => {
         <p>Email: {email}</p>
         <button onClick={handleClick}>Edit</button>
 
+        <button onClick={handlePicker}>Show Picker</button>
+        {showPicker && (
+          <Picker />
+        )}
         <Slider />
         <Range />
       </div>
