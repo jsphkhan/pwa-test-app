@@ -6,6 +6,12 @@ Basically I am trying to create a replica of Tajawal MWeb
 
 Git repo: https://github.com/jsphkhan/pwa-test-app
 
+I have added Brotli compression in server. Hosted server on AWS EC2 with Docker
+Brotli is working. More details below
+
+Project is to try Webpack bundling and webpack optimizations by 
+changing the webpack.config.js
+
 App structure
 ---------------
 SPA with multiple pages - page1, page2, page3
@@ -15,7 +21,7 @@ I will test
 PWA capabilities
 Preloading and Prefetching of resources
 Use large resources such as 3rd party font css, large JS lib, large CSS library
-Web pack code splitting, bundles, route based, component based
+Web pack code splitting, bundles, route based, component based, splitChunks Optimizations
 Enable Text Compression - gZip, Brotli
 Eliminate Render Blocking resources
 Use of libraries like Guess.js, Quicklinks JS
@@ -48,7 +54,7 @@ Deploy using docker at diff ports.
 One version - with gZip
 2nd version - with Brotli.
 
-Docker images created:
+Docker images created (in Docker Hub):
 ------------------------
 docker pull jsphkhan/pwa-test-app-brotli:v1.0.0
 docker pull jsphkhan/pwa-test-app-gzip:v1.0.0
