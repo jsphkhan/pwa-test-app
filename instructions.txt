@@ -1,13 +1,22 @@
 This is a Playground for me to test Web Performance
 
 App is a React App created using Create React App
-I have Ejected but have not modified webpack.config.js
+I have Ejected and have modified webpack.config.js to add compression plugins
 Basically I am trying to create a replica of Tajawal MWeb
 
 Git repo: https://github.com/jsphkhan/pwa-test-app
 
-I have added Brotli compression in server. Hosted server on AWS EC2 with Docker
-Brotli is working. More details below
+I have added Brotli compression during webpack build time.
+Webpack has compression plugin which supports gzip and brotli
+
+Brotli is working. More details below:
+Compressed files are generated during Webpack build time. (https://webpack.js.org/plugins/compression-webpack-plugin/)
+npm run build
+This will generate gzipped and brotli compressed chunks (JS, CSS) inside /build/static.
+eg.
+account_login.7242d532.chunk.js.br
+account_login.7242d532.chunk.js.gz
+Then start the Node server/
 
 Project is to try Webpack bundling and webpack optimizations by 
 changing the webpack.config.js
@@ -49,10 +58,10 @@ https://codeburst.io/express-brotli-webpack-a60773e7ec6c
 
 Deployment
 -------------
-Deploy 2 version of the app. EC2 instance. 
-Deploy using docker at diff ports.
-One version - with gZip
-2nd version - with Brotli.
+Deploy production bundle using Docker to EC2
+Bundle will have both gzip and brotli files. 
+Access the app on browser
+
 
 Docker images created (in Docker Hub):
 ------------------------
@@ -71,3 +80,10 @@ Behind the Scenes Gatsby Performance: https://www.gatsbyjs.org/blog/2019-04-02-b
 Pending:
 ---------
 Webpack Bundle Analyzer
+
+
+Docusaurus
+-----------
+Installed Docusaurus to try out docs
+Created 2 folders - docs, website
+https://docusaurus.io/docs/en/installation

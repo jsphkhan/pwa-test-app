@@ -25,6 +25,9 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -264,6 +267,14 @@ module.exports = function(webpackEnv) {
       splitChunks: {
         chunks: 'all',
         name: false,
+        // cacheGroups: {
+        //   vendors: {
+        //     test: /node_modules/,
+        //     name: 'vendors',
+        //     chunks: 'all',
+        //     minChunks: 2
+        //   }
+        // }
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
@@ -509,21 +520,20 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      new CompressionPlugin({
-        filename: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.js$|\.css$|\.html$/,
-        threshold: 2048,
-        minRatio: 0.8,
-      }),
-      new CompressionPlugin({
-        filename: '[path].br[query]',
-        algorithm: 'brotliCompress',
-        test: /\.(js|css|html|svg)$/,
-        compressionOptions: { level: 11 },
-        threshold: 2048,
-        minRatio: 0.8,
-      }),
+      // new CompressionPlugin({
+      //   filename: '[path].gz[query]',
+      //   algorithm: 'gzip',
+      //   test: /\.js$|\.css$|\.html$/,
+      //   threshold: 2048,
+      //   minRatio: 0.8,
+      // }),
+      // new BrotliPlugin({
+      //   asset: '[path].br[query]',
+      //   test: /\.js$|\.css$|\.html$/,
+      //   threshold: 2048,
+      //   minRatio: 0.8
+      // }),
+      // new BundleAnalyzerPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -550,6 +560,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        as: 'script'
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

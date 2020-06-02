@@ -16,12 +16,17 @@ var expressStaticGzip = require("express-static-gzip");
 // process.env.COMPRESSION === 'brotli' && app.use(shrinkRay());
 
 //static path
-//app.use(express.static(path.resolve(__dirname, 'build')));
-app.use(expressStaticGzip(path.join(__dirname, 'build'), {
-    index: false,
-    enableBrotli: true,
-    orderPreference: ['br', 'gz'],
-}));
+app.use(express.static(path.resolve(__dirname, 'build')));
+// app.use(expressStaticGzip(path.join(__dirname, 'build'), {
+//     index: false,
+//     enableBrotli: true,
+//     orderPreference: ['br', 'gz'],
+//     setHeaders: (res, path) => {
+//         res.set({
+//             'Cache-Control': 'public, max-age=3600'
+//         });
+//     }
+// }));
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

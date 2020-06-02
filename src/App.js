@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
-import './App.css';
-import 'bulma/css/bulma.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Todo from './mobxstore/store';
 
+//normal import 
+import HomePage from './pages/HomePage';
+import DetailsPage from './pages/DetailsPage';
+import EditPage from './pages/EditPage';
 
-//import pages - routes - code splitting
-const HomePage = React.lazy(() =>
-  import(/* webpackChunkName: "homeChunk" */ './pages/HomePage')
-);
-const DetailsPage = React.lazy(() =>
-  import(/* webpackChunkName: "detailsChunk" */ './pages/DetailsPage')
-);
-const EditPage = React.lazy(() =>
-  import(/* webpackChunkName: "editChunk" */ './pages/EditPage')
-);
+//route level code splitting
+// const HomePage = React.lazy(() =>
+//   import(/* webpackChunkName: "homeChunk" */ './pages/HomePage')
+// );
+// const DetailsPage = React.lazy(() =>
+//   import(/* webpackChunkName: "detailsChunk" */ './pages/DetailsPage')
+// );
+// const EditPage = React.lazy(() =>
+//   import(/* webpackChunkName: "editChunk" */ './pages/EditPage')
+// );
 
 
 
