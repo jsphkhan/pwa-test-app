@@ -6,24 +6,28 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
-// const compression = require('compression');
-// const shrinkRay = require('shrink-ray-current');
+const compression = require('compression');
 var expressStaticGzip = require("express-static-gzip");
 
-//console.log('Compression used: ' + process.env.COMPRESSION);
-
-// process.env.COMPRESSION === 'gzip' && app.use(compression());
-// process.env.COMPRESSION === 'brotli' && app.use(shrinkRay());
+// app.use(compression());
 
 //static path
-app.use(express.static(path.resolve(__dirname, 'build')));
+app.use(express.static(path.resolve(__dirname, 'build'), {
+    setHeaders: (res, path) => {
+        res.set({
+            //'Cache-Control': 'public, max-age=31536000',
+            'demo' : 'joseph'
+        });
+    }
+}));
+
 // app.use(expressStaticGzip(path.join(__dirname, 'build'), {
 //     index: false,
 //     enableBrotli: true,
 //     orderPreference: ['br', 'gz'],
 //     setHeaders: (res, path) => {
 //         res.set({
-//             'Cache-Control': 'public, max-age=3600'
+//             'Cache-Control': 'public, max-age=31536000' //cache for 1 year
 //         });
 //     }
 // }));

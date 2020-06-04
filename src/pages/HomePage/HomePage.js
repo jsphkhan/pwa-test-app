@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //css
-import './HomePage.css';
+//import './HomePage.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
       flexGrow: 1,
+      fontFamily: 'Tajawal, sans-serif'
+    },
+    secondary: {
+      fontFamily: 'Tajawal, sans-serif',
     },
     large: {
       width: theme.spacing(6),
@@ -93,7 +97,6 @@ const HomePage = () => {
             <List className={classes.root}>            
               {!_.isEmpty(users) && _.map(users, (user, index) => {
                 return (
-                  <>
                   <Link to={{
                     pathname: `/details/${_.get(user, 'id')}`, 
                     state: {
@@ -101,8 +104,8 @@ const HomePage = () => {
                       name: `${_.get(user, 'first_name', '')} ${_.get(user, 'last_name', '')}`,
                       avatar: _.get(user, 'avatar')
                     }
-                  }} key={index}>
-                    <ListItem alignItems="flex-start" key={_.get(user, 'id')}>
+                  }} key={_.get(user, 'id')}>
+                    <ListItem alignItems="flex-start">
                         <ListItemAvatar>
                           <Avatar 
                             className={classes.large}
@@ -116,7 +119,8 @@ const HomePage = () => {
                               <Typography
                                 component="span"
                                 variant="body2"
-                                color="textPrimary">
+                                color="textPrimary"
+                                className={classes.secondary}>
                                   {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                   Proin ultrices dapibus elementum. Lorem ipsum dolor sit amet, 
                                   consectetur adipiscing elit. Cras aliquet lectus ipsum, vitae 
@@ -125,9 +129,8 @@ const HomePage = () => {
                             </React.Fragment>
                           } />
                     </ListItem>
-                  </Link>
-                  <Divider variant="inset" component="li" />
-                  </>
+                    <Divider variant="inset" component="li" />
+                  </Link>   
                 );
               })}
             </List>

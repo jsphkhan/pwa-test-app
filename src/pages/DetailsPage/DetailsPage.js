@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     backgroundColor: theme.palette.background.paper,
+  },
+  description: {
+    fontFamily: 'Tajawal, sans-serif'
   }
 }));
 
@@ -2981,7 +2984,7 @@ const DetailsPage = () => {
             />
           </ListItem>
 
-          <Typography className={classes.title} color="textPrimary" gutterBottom>
+          <Typography className={classes.description} color="textPrimary" gutterBottom>
             {`Excepteur ipsum magna ex duis. Cillum nulla consectetur tempor nisi. Duis consectetur qui elit id ullamco velit laborum ex sit enim adipisicing ipsum nisi minim et. Aute pariatur deserunt mollit quis duis commodo est ad mollit reprehenderit. Consectetur incididunt incididunt occaecat aliquip ea culpa nulla cillum. Ullamco non proident ea ea deserunt sunt ut reprehenderit consectetur. Sint minim quis non fugiat non Lorem elit amet aute duis et. Adipisicing veniam do mollit occaecat ipsum aliqua aute ullamco ullamco enim laborum dolor esse.
               Laborum ad fugiat laboris dolore. Velit et cupidatat fugiat id elit labore. Esse nostrud cillum irure incididunt culpa est duis velit excepteur eiusmod cupidatat labore culpa. Qui reprehenderit fugiat incididunt ea eiusmod in non esse. Incididunt ex excepteur cupidatat excepteur ex veniam amet incididunt. Duis pariatur aliquip dolore fugiat ad. Proident minim dolore eiusmod laborum commodo magna deserunt nostrud occaecat aute aliqua incididunt duis non pariatur. Nisi excepteur enim non veniam esse duis nostrud.
               Proident dolore ex consequat. Nostrud esse labore culpa veniam. Amet magna dolor id reprehenderit esse cupidatat duis eu adipisicing elit ex nostrud elit. Reprehenderit enim pariatur voluptate proident culpa dolore incididunt sunt sint consectetur ex adipisicing mollit laboris dolore. Consequat ut voluptate esse magna non est elit nisi ut eu. Tempor duis dolore qui duis ullamco consequat ad officia. Ullamco laborum reprehenderit et qui nisi et incididunt non ullamco ex nulla deserunt consequat.

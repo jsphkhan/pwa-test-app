@@ -13,8 +13,12 @@ import EditPage from './pages/EditPage';
 // const HomePage = React.lazy(() =>
 //   import(/* webpackChunkName: "homeChunk" */ './pages/HomePage')
 // );
+// /* 
+//   As of the v4.6.0 release of webpack, there is native support for 
+//   generating both prefetch and preload using magic comments
+// */
 // const DetailsPage = React.lazy(() =>
-//   import(/* webpackChunkName: "detailsChunk" */ './pages/DetailsPage')
+//   import(/* webpackChunkName: "detailsChunk", webpackPrefetch: true */ './pages/DetailsPage')
 // );
 // const EditPage = React.lazy(() =>
 //   import(/* webpackChunkName: "editChunk" */ './pages/EditPage')
