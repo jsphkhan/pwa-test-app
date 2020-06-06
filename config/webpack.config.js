@@ -520,19 +520,19 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      // new CompressionPlugin({
-      //   filename: '[path].gz[query]',
-      //   algorithm: 'gzip',
-      //   test: /\.js$|\.css$|\.html$/,
-      //   threshold: 2048,
-      //   minRatio: 0.8,
-      // }),
-      // new BrotliPlugin({
-      //   asset: '[path].br[query]',
-      //   test: /\.js$|\.css$|\.html$/,
-      //   threshold: 2048,
-      //   minRatio: 0.8
-      // }),
+      new CompressionPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 2048,
+        minRatio: 0.8,
+      }),
+      new BrotliPlugin({
+        asset: '[path].br[query]',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 2048,
+        minRatio: 0.8
+      }),
       // new BundleAnalyzerPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
@@ -560,10 +560,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      // new PreloadWebpackPlugin({
-      //   rel: 'preload',
-      //   include: 'initial' // or 'initial', allChunks or 'allAssets'
-      // }),
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        include: 'initial' // or 'initial', allChunks or 'allAssets'
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
