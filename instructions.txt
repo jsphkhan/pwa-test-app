@@ -8,7 +8,7 @@ I presented this app for FrontEnd meetup session on Improving App Loading Perfor
 
 Git repo: https://github.com/jsphkhan/pwa-test-app
 Slides: https://slides.com/josephk-1/deck-68b9ce/edit
-Youtube Video tutorial: 
+Youtube Video tutorial: https://youtu.be/i-z6l3CQdrw
 
 I have added Brotli compression during webpack build time.
 Webpack has compression plugins which supports gzip and brotli
