@@ -4,10 +4,14 @@ App is a React App created using Create React App
 I have Ejected and have modified webpack.config.js to add compression plugins
 Basically I am trying to create a replica of Tajawal MWeb
 
+I presented this app for FrontEnd meetup session on Improving App Loading Performance
+
 Git repo: https://github.com/jsphkhan/pwa-test-app
+Slides: https://slides.com/josephk-1/deck-68b9ce/edit
+Youtube Video tutorial: 
 
 I have added Brotli compression during webpack build time.
-Webpack has compression plugin which supports gzip and brotli
+Webpack has compression plugins which supports gzip and brotli
 
 Brotli is working. More details below:
 Compressed files are generated during Webpack build time. (https://webpack.js.org/plugins/compression-webpack-plugin/)
