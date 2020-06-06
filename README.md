@@ -1,3 +1,6 @@
+### Session Tutorial
+Watch this Youtube Video for the tutorial: [Improve App Load Performance](https://youtu.be/i-z6l3CQdrw)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
