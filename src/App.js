@@ -5,26 +5,26 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Todo from './mobxstore/store';
 
 //normal import 
-// import HomePage from './pages/HomePage';
-// import DetailsPage from './pages/DetailsPage';
-// import EditPage from './pages/EditPage';
+import HomePage from './pages/HomePage';
+import DetailsPage from './pages/DetailsPage';
+import EditPage from './pages/EditPage';
 
 //route level code splitting
-const HomePage = React.lazy(() =>
-  import(/* webpackChunkName: "homeChunk" */ './pages/HomePage')
-);
-/* 
-  As of the v4.6.0 release of webpack, there is native support for 
-  generating both prefetch and preload using magic comments
+// const HomePage = React.lazy(() =>
+//   import(/* webpackChunkName: "homeChunk" */ './pages/HomePage')
+// );
+// /* 
+//   As of the v4.6.0 release of webpack, there is native support for 
+//   generating both prefetch and preload using magic comments
 
-  webpackPrefetch: true
-*/
-const DetailsPage = React.lazy(() =>
-  import(/* webpackChunkName: "detailsChunk", webpackPrefetch: true */ './pages/DetailsPage')
-);
-const EditPage = React.lazy(() =>
-  import(/* webpackChunkName: "editChunk" */ './pages/EditPage')
-);
+//   webpackPrefetch: true
+// */
+// const DetailsPage = React.lazy(() =>
+//   import(/* webpackChunkName: "detailsChunk" */ './pages/DetailsPage')
+// );
+// const EditPage = React.lazy(() =>
+//   import(/* webpackChunkName: "editChunk" */ './pages/EditPage')
+// );
 
 
 
