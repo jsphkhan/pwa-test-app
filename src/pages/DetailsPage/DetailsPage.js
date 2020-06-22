@@ -13,10 +13,18 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import Dialog from '@material-ui/core/Dialog';
+import Slide from '@material-ui/core/Slide';
+import CloseIcon from '@material-ui/icons/Close';
+import ShareIcon from '@material-ui/icons/Share';
+
+import queryString from 'query-string';
 
 //import heavy vendor libs
 import _ from 'lodash';
@@ -48,25 +56,58 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     fontFamily: 'Tajawal, sans-serif'
-  }
+  },
+  appBar: {
+    position: 'relative',
+  },
 }));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+let unblock = null;
 
 const DetailsPage = () => {
   const classes = useStyles();
   const location = useLocation();
   const params = useParams();
   const history = useHistory();
+  const [open, setOpen] = React.useState(false);
 
-  //read data from route
-  const { email, name, avatar } = location.state;
+  /** 
+   * passing data through location.state will throw JS error 
+   * when you directly land on Details page eg. whatsapp share
+  */
+  //const { email, name, avatar } = location.state; 
+
+  //ideally the data should come from mobx store using the id
+  const { email, name, avatar } = {name: 'Joseph', email: 'jsph@gmail.com', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg'};
   const id = _.get(params, 'id', ''); //read data from URL segments eg. /details/:id
+  //console.log('id: ', id);
 
+  //read from query string
+  const queryStringData = queryString.parse(history.location.search);
+
+  React.useEffect(() => {
+    //console.log('queryStringData: ', queryStringData);
+    if(queryStringData.view === "modal") {
+      setOpen(true); //open modal dialog
+    }
+  }, [queryStringData]);
+
+  /** 
+   * Go back to home page
+  */
   const handleBack = () => {
     history.goBack();
   }
 
+  /** 
+   * Go to Edit Page
+  */
   const handleClick = () => {
-    console.log('Navigate to Edit page');
+    //console.log('Navigate to Edit page');
     history.push({
       pathname: `/edit/${id}`,
       state: {
@@ -76,6 +117,49 @@ const DetailsPage = () => {
       }
     });
   };
+
+  /** 
+   * Open Modal Dialog
+  */
+  const handleClickOpen = () => {
+    history.replace('?view=modal'); //update the URL
+    unblock = history.block();
+    window.onpopstate = () => {
+      //console.log('back button clicked');
+      handleClose();
+    }
+    setOpen(true);
+  };
+
+  /** 
+   * Close Modal Dialog
+  */
+  const handleClose = () => {
+    unblock && unblock();
+    history.replace(history.location.pathname); //change URL to previous
+    setOpen(false);
+  };
+
+  /** 
+   * Handle Web Share
+  */
+ const handleShare = async () => {
+   if(window.navigator.share) {
+    try {
+      await window.navigator.share({
+        url: window.location.href,
+        title: 'Have a look',
+        text: 'Check out the Information'
+      });
+      console.log('Shared Successfully');
+    } catch (err) {
+      console.log('Share Error: ', err);
+    }
+   } else {
+     alert('Web Sharing Not Supported in your Browser');
+   }
+ }
+
 
   React.useEffect(() => {
     window.scrollTo(0,0);
@@ -2964,7 +3048,7 @@ const DetailsPage = () => {
       <Card className={classes.root}>
         <CardContent>
           <ListItem alignItems="flex-start" className={classes.listItem}>
-            <ListItemAvatar>
+            <ListItemAvatar onClick={handleClickOpen}>
               <Avatar 
                 className={classes.large}
                 alt={name} 
@@ -2996,6 +3080,31 @@ const DetailsPage = () => {
           <Button size="small" onClick={handleClick}>Edit User</Button>
         </CardActions>
       </Card>
+
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+              <CloseIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              {name}
+            </Typography>
+            <IconButton edge="start" color="inherit" onClick={handleShare} aria-label="close">
+              <ShareIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <List>
+          <ListItem button>
+            <ListItemText primary="Phone ringtone" secondary="Titania" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Default notification ringtone" secondary="Tethys" />
+          </ListItem>
+        </List>
+      </Dialog>
     </div>
   );
 };

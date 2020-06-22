@@ -100,9 +100,7 @@ const HomePage = () => {
                   <Link to={{
                     pathname: `/details/${_.get(user, 'id')}`, 
                     state: {
-                      email: _.get(user, 'email'), 
-                      name: `${_.get(user, 'first_name', '')} ${_.get(user, 'last_name', '')}`,
-                      avatar: _.get(user, 'avatar')
+                      
                     }
                   }} key={_.get(user, 'id')}>
                     <ListItem alignItems="flex-start">

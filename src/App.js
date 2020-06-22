@@ -41,6 +41,11 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/details/:id" component={DetailsPage} />
           <Route path="/edit/:id" component={EditPage} />
+          <Route path="/*">
+            <div style={{padding: 20, textAlign: 'center'}}>
+              <h1>404 Page Not Found</h1>
+            </div>
+          </Route>
         </Switch>
       </React.Suspense>
     </Router>
