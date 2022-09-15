@@ -18,11 +18,11 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 
 //import heavy vendor libs
-import _ from 'lodash';
+// import _ from 'lodash';
 
-// import _get from 'lodash/get';
-// import _map from 'lodash/map';
-// import _isEmpty from 'lodash/isEmpty';
+import _get from 'lodash/get';
+import _map from 'lodash/map';
+import _isEmpty from 'lodash/isEmpty';
 
 //import utility
 import {sum, multiply} from '../../utils';
@@ -62,9 +62,9 @@ const HomePage = () => {
     const API = "https://reqres.in/api/users?per_page=12"; //free rest api
     const [users, setUsers] = useState([]);
 
-    const getter = _.get; 
-    const mapper = _.map;
-    const isEmpty = _.isEmpty;
+    const getter = _get; 
+    const mapper = _map;
+    const isEmpty = _isEmpty;
 
     useEffect(() => {
         async function fetchData() {
