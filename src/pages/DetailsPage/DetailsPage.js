@@ -28,8 +28,9 @@ import queryString from 'query-string';
 
 //import heavy vendor libs
 import _ from 'lodash';
-import moment from 'moment';
 import * as math from 'mathjs';
+
+// import _get from 'lodash/get';
 
 //import utility
 import {divide} from '../../utils';
@@ -74,6 +75,7 @@ const DetailsPage = () => {
   const params = useParams();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
+  const getter = _.get; 
 
   /** 
    * passing data through location.state will throw JS error 
@@ -83,7 +85,7 @@ const DetailsPage = () => {
 
   //ideally the data should come from mobx store using the id
   const { email, name, avatar } = {name: 'Joseph', email: 'jsph@gmail.com', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg'};
-  const id = _.get(params, 'id', ''); //read data from URL segments eg. /details/:id
+  const id = getter(params, 'id', ''); //read data from URL segments eg. /details/:id
   //console.log('id: ', id);
 
   //read from query string
@@ -163,10 +165,6 @@ const DetailsPage = () => {
 
   React.useEffect(() => {
     window.scrollTo(0,0);
-
-    const locale = moment.locale();
-    console.log(locale);
-    console.log(moment().format('DD MMM YY'));
 
     console.log('** mathjs **');
     console.log(math.log(10000, 10));
@@ -3028,7 +3026,6 @@ const DetailsPage = () => {
   
   }                                                                                                                                        
   /* eslint-enable */  
-  //
 
   return (
     <div>

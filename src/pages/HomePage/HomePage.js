@@ -19,7 +19,10 @@ import Avatar from '@material-ui/core/Avatar';
 
 //import heavy vendor libs
 import _ from 'lodash';
-import moment from 'moment';
+
+// import _get from 'lodash/get';
+// import _map from 'lodash/map';
+// import _isEmpty from 'lodash/isEmpty';
 
 //import utility
 import {sum, multiply} from '../../utils';
@@ -59,22 +62,22 @@ const HomePage = () => {
     const API = "https://reqres.in/api/users?per_page=12"; //free rest api
     const [users, setUsers] = useState([]);
 
+    const getter = _.get; 
+    const mapper = _.map;
+    const isEmpty = _.isEmpty;
+
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await fetch(API);
                 const data = await response.json();
                 console.log(data);
-                setUsers(_.get(data, 'data', [])); //update the state
+                setUsers(getter(data, 'data', [])); //update the state
             } catch(err) {
                 console.log('API Err: ', err);
             }
         }
         fetchData();
-
-        const locale = moment.locale();
-        console.log(locale);
-        console.log(moment().format('DD MM YYYY'));
 
         console.log(sum(1,2));
         console.log(multiply(22,3));
@@ -95,23 +98,23 @@ const HomePage = () => {
                 
             {/* list of users */}
             <List className={classes.root}>            
-              {!_.isEmpty(users) && _.map(users, (user, index) => {
+              {!isEmpty(users) && mapper(users, (user, index) => {
                 return (
                   <Link to={{
-                    pathname: `/details/${_.get(user, 'id')}`, 
+                    pathname: `/details/${getter(user, 'id')}`, 
                     state: {
                       
                     }
-                  }} key={_.get(user, 'id')}>
+                  }} key={getter(user, 'id')}>
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
                           <Avatar 
                             className={classes.large}
-                            alt={_.get(user, 'first_name', '')} 
-                            src={_.get(user, 'avatar')} />
+                            alt={getter(user, 'first_name', '')} 
+                            src={getter(user, 'avatar')} />
                         </ListItemAvatar>
                         <ListItemText
-                          primary={`${_.get(user, 'first_name', '')} ${_.get(user, 'last_name', '')}`} 
+                          primary={`${getter(user, 'first_name', '')} ${getter(user, 'last_name', '')}`} 
                           secondary={
                             <React.Fragment>
                               <Typography

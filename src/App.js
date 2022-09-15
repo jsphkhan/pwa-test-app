@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Todo from './mobxstore/store';
+// import Todo from './mobxstore/store';
 
 //normal import 
 import HomePage from './pages/HomePage';
@@ -29,10 +29,10 @@ import EditPage from './pages/EditPage';
 
 
 function App() {
-  useEffect(() => {
-    const todos = new Todo(); 
-    console.log(todos);
-  }, [])
+  // useEffect(() => {
+  //   const todos = new Todo(); 
+  //   console.log(todos);
+  // }, [])
 
   return (
     <Router>
