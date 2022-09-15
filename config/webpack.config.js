@@ -26,7 +26,7 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const postcssNormalize = require('postcss-normalize');
@@ -560,10 +560,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      // new PreloadWebpackPlugin({
-      //   rel: 'preload',
-      //   include: 'initial' // or 'initial', allChunks or 'allAssets'
-      // }),
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        include: 'initial' // or 'initial'
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

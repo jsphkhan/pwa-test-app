@@ -79,6 +79,7 @@ Preload, Prefetch And Priorities in Chrome - https://medium.com/reloading/preloa
 Code Splitting and Prefetching in Gatsby - https://www.gatsbyjs.org/docs/how-code-splitting-works/
 A React And Preact Progressive Web App Performance Case Study: Treebo - https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
 Behind the Scenes Gatsby Performance: https://www.gatsbyjs.org/blog/2019-04-02-behind-the-scenes-what-makes-gatsby-great/
+Defer or preload non critical CSS: https://web.dev/defer-non-critical-css/
 
 
 Pending:
