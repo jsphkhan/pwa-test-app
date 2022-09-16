@@ -560,10 +560,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      new PreloadWebpackPlugin({
-        rel: 'preload',
-        include: 'initial' // or 'initial'
-      }),
+      // new PreloadWebpackPlugin({
+      //   rel: 'preload',
+      //   include: 'initial' // or 'initial'
+      // }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
